@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EECS 487 Final Project</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="static/css/style.css" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;800&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <img src="static/images/quiz.png" id="icon" />
+        <h1>Which fandom do you belong in?</h1>
+        <p>
+            Reddit is a text-based social media platform with a large fandom presence.
+            This quiz uses data from Reddit to tell you which fandom <span class="caps">you</span> belong to!
+        </p>
+        <div id="quiz">
+            <h2>Enter a sentence:</h2>
+            <form action="/" method="post">
+                <input type="text" id="input" name="input">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        {% if resultShowing %}
+            <div class="spacer"></div>
+            <div id="result-box">
+                <div id="result">
+                    <h2 class="left">{{ fandom }}</h2>
+                    <p>
+                        {{ fandom_desc }}
+                    </p>
+                </div>
+            </div>
+        <!-- Needs to be called when result-box changes to display: block -->
+            <div id="confetti">
+                <script src="static/scripts/confetti.js"></script>
+                <script>
+                    const start = () => {
+                        console.log("called start");
+                        confetti.start()
+                    };
+
+                    const stop = () => {
+                        console.log("called stop");
+                        setTimeout(function() {
+                            confetti.stop()
+                        }, 600);
+                    };
+                    
+                    start();
+                    stop();
+                </script>
+            </div>
+        {% endif %}
+    </body>
+</html>
